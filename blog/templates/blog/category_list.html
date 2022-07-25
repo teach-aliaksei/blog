@@ -1,0 +1,15 @@
+
+{% extends "blog/base.html"  %}
+
+{% block title %}<title>Category's list</title>{% endblock %}
+{% block content %}
+
+<p>Category</p>
+
+{% for i in posts %}
+<div>
+    <p><a href="{% url 'view_post' pk=i.pk %}">{{ i.title }}</a></p>
+</div>
+{% endfor %}
+
+{% endblock %}

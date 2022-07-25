@@ -1,0 +1,43 @@
+
+{% extends "blog/base.html"  %}
+
+
+{% block content %}
+
+<p>{{post}}</p>
+<p>{{post.text}}</p>
+<p>{{post.date}}</p>
+
+
+{% if post.img %}
+<img src="{{ post.img.url }}">
+
+{% else %}
+
+{% endif  %}
+
+
+
+
+<p><a href="{% url 'add_like' pk=post.pk %}">Likes</a>: {{post.like}}</p>
+<p>Views: {{post.view}}</p>
+
+<p><a href="{% url 'edit_post' pk=pk %}">Edit post</a></p>
+
+<h2>Comments</h2>
+{% for i in comments %}
+<p>{{ i.text}}</p>
+<p>{{i.date}}</p>
+{% endfor %}
+
+<h2>Add comment</h2>
+<form method="post">
+    {%  csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add comment">
+</form>
+
+
+{% endblock %}
+
+

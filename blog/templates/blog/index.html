@@ -1,0 +1,71 @@
+
+{% extends "blog/base.html"  %}
+
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+<p><a href="{% url 'logout'  %}">Logout</a></p>
+
+{% else %}
+<p><a href="{% url 'login' %}">Login</a></p>
+
+
+{% endif  %}
+
+
+
+<p><a href="{% url 'create_post' %}">Create Post</a></p>
+
+
+
+
+
+
+<h1>PAGINATOR</h1>
+
+<div>
+
+    {% for i in cats %}
+    <p><a href="{% url 'category' pk=i.pk %}">{{ i }}</a></p>
+
+    {% endfor  %}
+
+
+    {% if page.has_previous %}
+    <a href="?page={{ page.previous_page_number }}">Later</a>
+    {% endif %}
+    Number of page {{ page.number }}
+    {% if page.has_next %}
+    <a href="?page={{ page.next_page_number }}">Next</a>
+    {% endif %}
+
+</div>
+
+
+
+
+<h1>CONTEXT</h1>
+
+{{ categs }}
+
+
+<h1>MESSSAGES</h1>
+
+{% for i in messages %}
+<script>
+
+    alert("{{i}}")
+
+</script>
+{% endfor %}
+
+
+{% endblock %}
+
+
+
+
+
+
