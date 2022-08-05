@@ -27,19 +27,12 @@
 
 <div>
 
-    {% for i in cats %}
+    {% for i in categories %}
     <p><a href="{% url 'category' pk=i.pk %}">{{ i }}</a></p>
 
     {% endfor  %}
 
 
-    {% if page.has_previous %}
-    <a href="?page={{ page.previous_page_number }}">Later</a>
-    {% endif %}
-    Number of page {{ page.number }}
-    {% if page.has_next %}
-    <a href="?page={{ page.next_page_number }}">Next</a>
-    {% endif %}
 
 </div>
 

@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.urls import path, include
 
-from blog.views import main_page, category_list, create_post, edit_post, view_post, add_like, my_login
+from blog.views import main_page, category_list, create_post, edit_post, view_post, add_like, my_login, regist, boot, rest
 
 
 urlpatterns = [
@@ -15,6 +15,7 @@ urlpatterns = [
     path('post/add_like/<int:pk>/', add_like, name="add_like"),
     path('login/', my_login, name="login"),
     path('logout/', LogoutView.as_view(), name="logout"),
-
-
+    path('reg/', regist, name="regist"),
+    path('boot/', boot, name="boot"),
+    path('rest/', rest),
 ]
